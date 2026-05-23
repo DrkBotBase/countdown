@@ -3,17 +3,17 @@
 <head>
     <%- include('partials/head', {title: 'El Oráculo del Tiempo'}); %>
 </head>
-<body class="bg-void text-gray-300 font-sans selection:bg-blood selection:text-white overflow-hidden">
+<body class="bg-void text-gray-100 font-sans selection:bg-blood selection:text-white overflow-hidden">
     <div id="pwaGate" class="fixed inset-0 z-[200] flex items-center justify-center bg-black transition-opacity duration-1000 px-6 text-center">
         <div class="w-full max-w-sm space-y-10">
             <h2 class="font-header text-xl text-blood tracking-[0.4em] animate-pulse" data-text="ACCESO RESTRINGIDO">ACCESO RESTRINGIDO</h2>
 
             <div class="space-y-6">
-                <p class="text-[10px] uppercase tracking-[0.2em] text-gray-500 leading-relaxed">
+                <p class="text-[10px] uppercase tracking-[0.2em] text-gray-300 leading-relaxed">
                     Para que el oráculo se vincule con tu rastro digital, debes instalar esta terminal en tu dispositivo.
                 </p>
 
-                <div id="installInstructions" class="text-[9px] uppercase tracking-[0.15em] text-gray-500 space-y-4 py-6 border-y border-gray-900">
+                <div id="installInstructions" class="text-[9px] uppercase tracking-[0.15em] text-gray-300 space-y-4 py-6 border-y border-gray-900">
                     <p id="genericInst">Busca la opción "Instalar App" o "Agregar a pantalla de inicio" en el menú de tu navegador.</p>
                 </div>
             </div>
@@ -34,27 +34,27 @@
             <div class="w-full max-w-2xl bg-black/60 border border-gray-900 p-8 md:p-16 shadow-2xl backdrop-blur-sm space-y-12">
               <div class="text-center">
                   <h1 class="glitch font-header text-2xl md:text-3xl font-bold tracking-[0.3em] text-blood" data-text="EL PACTO">EL PACTO</h1>
-                  <p class="text-[9px] text-gray-600 uppercase tracking-[0.4em] mt-4 italic">Acuerdo Irrevocable de la Entidad</p>
+                  <p class="text-[9px] text-gray-400 uppercase tracking-[0.4em] mt-4 italic">Acuerdo Irrevocable de la Entidad</p>
               </div>
               
               <div class="space-y-8 font-digital">
                   <div class="group border-l-2 border-blood/20 pl-6 py-2 hover:border-blood transition-colors">
                       <h3 class="text-[10px] uppercase tracking-[0.3em] text-blood mb-3">01. Destino Dictado</h3>
-                      <p class="text-xs text-gray-500 leading-relaxed uppercase tracking-tighter">
+                      <p class="text-xs text-gray-300 leading-relaxed uppercase tracking-tighter">
                           Al cruzar este umbral digital, reconoces que cualquier revelación sobre tu finitud es absoluta dentro de los límites de esta simulación.
                       </p>
                   </div>
                   
                   <div class="group border-l-2 border-blood/20 pl-6 py-2 hover:border-blood transition-colors">
                       <h3 class="text-[10px] uppercase tracking-[0.3em] text-blood mb-3">02. Vinculación Espectral</h3>
-                      <p class="text-xs text-gray-500 leading-relaxed uppercase tracking-tighter">
+                      <p class="text-xs text-gray-300 leading-relaxed uppercase tracking-tighter">
                           Al aceptar, permites que los algoritmos de la entidad procesen tu rastro digital para aproximar el momento de tu desvanecimiento inevitable.
                       </p>
                   </div>
                   
                   <div class="group border-l-2 border-blood/20 pl-6 py-2 hover:border-blood transition-colors">
                       <h3 class="text-[10px] uppercase tracking-[0.3em] text-blood mb-3">03. Ley de Silencio</h3>
-                      <p class="text-xs text-gray-500 leading-relaxed uppercase tracking-tighter">
+                      <p class="text-xs text-gray-300 leading-relaxed uppercase tracking-tighter">
                           Cualquier intento de desafiar el cronómetro será castigado con susurros electrónicos a medianoche y la sensación de ser observado.
                       </p>
                   </div>
@@ -70,15 +70,15 @@
         <div class="w-full max-w-sm bg-black/60 border border-gray-900 p-8 shadow-2xl backdrop-blur-sm flex flex-col justify-center">
             <div class="text-center mb-12">
                 <h1 class="glitch font-header text-2xl font-bold tracking-[0.3em] text-blood mb-4" data-text="COUNTDOWN">COUNTDOWN</h1>
-                <p class="text-[9px] text-gray-600 italic tracking-[0.3em] uppercase">El fin comienza con tu nombre</p>
+                <p class="text-[9px] text-gray-400 italic tracking-[0.3em] uppercase">El fin comienza con tu nombre</p>
             </div>
             
             <form action="/calculate" method="POST" class="space-y-10" novalidate>
                 <div class="relative group">
-                    <label for="name" class="block text-[9px] uppercase tracking-[0.3em] text-gray-600 mb-4 text-center group-focus-within:text-blood transition-colors">Identidad Requerida</label>
+                    <label for="name" class="block text-[9px] uppercase tracking-[0.3em] text-gray-400 mb-4 text-center group-focus-within:text-blood transition-colors">Identidad Requerida</label>
                     <input type="text" id="name" name="name" 
                            placeholder="PRIMER Y SEGUNDO NOMBRE"
-                           class="w-full bg-transparent border-b border-gray-900 pb-3 text-center text-white focus:outline-none focus:border-blood transition-colors placeholder:text-gray-800 tracking-[0.2em] text-xs uppercase font-digital">
+                           class="w-full bg-transparent border-b border-gray-900 pb-3 text-center text-white focus:outline-none focus:border-blood transition-colors placeholder:text-gray-600 tracking-[0.2em] text-xs uppercase font-digital">
                 </div>
                 
                 <button type="submit" class="w-full bg-transparent border border-blood/40 text-blood py-5 text-[10px] font-bold uppercase tracking-[0.5em] hover:bg-blood hover:text-black transition-all duration-700">
@@ -104,10 +104,10 @@
 
         function checkPwaStatus() {
             if (isStandalone()) {
-                pwaGate.classList.add('opacity-0', 'pointer-events-none');
+                document.documentElement.classList.add('is-standalone');
                 document.body.classList.remove('overflow-hidden');
             } else {
-                pwaGate.classList.remove('opacity-0', 'pointer-events-none');
+                document.documentElement.classList.remove('is-standalone');
                 document.body.classList.add('overflow-hidden');
             }
         }
@@ -135,6 +135,7 @@
             const { outcome } = await deferredPrompt.userChoice;
             if (outcome === 'accepted') {
                 console.log('User accepted the install prompt');
+                document.documentElement.classList.add('is-standalone');
             }
             deferredPrompt = null;
         });
@@ -145,23 +146,18 @@
 
         checkPwaStatus();
 
-        const savedId = localStorage.getItem('countdown_user_id');
-        if (savedId) {
-            window.location.href = `/countdown/${savedId}`;
-        }
-
         document.addEventListener('DOMContentLoaded', () => {
             const modal = document.getElementById('termsModal');
             const acceptBtn = document.getElementById('acceptTerms');
             
             if (localStorage.getItem('termsAccepted') === 'true') {
-                modal.classList.add('opacity-0', 'pointer-events-none');
+                document.documentElement.classList.add('terms-accepted');
                 document.body.classList.remove('overflow-hidden');
             }
 
             acceptBtn.addEventListener('click', () => {
                 localStorage.setItem('termsAccepted', 'true');
-                modal.classList.add('opacity-0', 'pointer-events-none');
+                document.documentElement.classList.add('terms-accepted');
                 document.body.classList.remove('overflow-hidden');
             });
         });
@@ -189,7 +185,7 @@
               errorMsg.innerHTML = `⚠️ ${message} ⚠️`;
               
               const subMsg = document.createElement('p');
-              subMsg.className = 'text-gray-500 text-[7px] uppercase tracking-[0.2em] italic';
+              subMsg.className = 'text-gray-300 text-[7px] uppercase tracking-[0.2em] italic';
               subMsg.textContent = 'El oráculo no puede leer el vacío...';
               
               errorDiv.appendChild(line);
@@ -238,22 +234,5 @@
           });
       });
     </script>
-
-    <style>
-      @keyframes fadeIn {
-          from {
-              opacity: 0;
-              transform: translateY(-10px);
-          }
-          to {
-              opacity: 1;
-              transform: translateY(0);
-          }
-      }
-      
-      .animate-fade-in {
-          animation: fadeIn 0.3s ease-out;
-      }
-    </style>
 </body>
 </html>

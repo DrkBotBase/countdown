@@ -9,6 +9,25 @@
 <meta name="theme-color" content="#000000">
 <link rel="apple-touch-icon" href="/icons/cd_192.jpg">
 <script>
+    (function() {
+        const isStandalone = (window.matchMedia('(display-mode: standalone)').matches) || 
+                             (window.navigator.standalone) || 
+                             localStorage.getItem('pwa_bypass') === 'true';
+        const termsAccepted = localStorage.getItem('termsAccepted') === 'true';
+        const savedId = localStorage.getItem('countdown_user_id');
+
+        if (isStandalone) {
+            document.documentElement.classList.add('is-standalone');
+        }
+        if (termsAccepted) {
+            document.documentElement.classList.add('terms-accepted');
+        }
+        if (savedId && termsAccepted && window.location.pathname === '/' && isStandalone) {
+            window.location.href = '/countdown/' + savedId;
+        }
+    })();
+</script>
+<script>
     tailwind.config = {
         theme: {
             extend: {
