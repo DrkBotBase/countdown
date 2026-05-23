@@ -31,7 +31,7 @@ self.addEventListener('activate', event => {
         })
     );
 });
-/*
+
 self.addEventListener('fetch', event => {
     event.respondWith(
         caches.match(event.request)
@@ -42,12 +42,4 @@ self.addEventListener('fetch', event => {
                 return fetch(event.request);
             })
     );
-});
-*/
-self.addEventListener('fetch', event => {
-  event.respondWith(
-    fetch(event.request).catch(() => {
-      return caches.match(event.request);
-    })
-  );
 });
