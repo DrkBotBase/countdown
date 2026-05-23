@@ -1,0 +1,26 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="La app de la película ahora en tu pantalla. Vive la simulación de terror de la cuenta regresiva definitiva. ¡Juega gratis en esta Web App interactiva!">
+<title><%= title || 'Countdown' %></title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#000000">
+<link rel="apple-touch-icon" href="/icons/cd_192.jpg">
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    'blood': '#8b0000',
+                    'void': '#050505',
+                },
+                fontFamily: {
+                    'digital': ['"Share Tech Mono"', 'monospace'],
+                    'header': ['Syncopate', 'sans-serif'],
+                }
+            }
+        }
+    }
+</script>

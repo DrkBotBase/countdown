@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <%- include('partials/head', {title: 'El Oráculo del Tiempo'}); %>
+</head>
+<body class="bg-void text-gray-300 font-sans selection:bg-blood selection:text-white overflow-hidden">
+    <div id="pwaGate" class="fixed inset-0 z-[200] flex items-center justify-center bg-black transition-opacity duration-1000 px-6 text-center">
+        <div class="w-full max-w-sm space-y-10">
+            <h2 class="font-header text-xl text-blood tracking-[0.4em] animate-pulse" data-text="ACCESO RESTRINGIDO">ACCESO RESTRINGIDO</h2>
+
+            <div class="space-y-6">
+                <p class="text-[10px] uppercase tracking-[0.2em] text-gray-500 leading-relaxed">
+                    Para que el oráculo se vincule con tu rastro digital, debes instalar esta terminal en tu dispositivo.
+                </p>
+
+                <div id="installInstructions" class="text-[9px] uppercase tracking-[0.15em] text-gray-500 space-y-4 py-6 border-y border-gray-900">
+                    <p id="genericInst">Busca la opción "Instalar App" o "Agregar a pantalla de inicio" en el menú de tu navegador.</p>
+                </div>
+            </div>
+
+            <button id="pwaInstallBtn" class="hidden w-full bg-blood text-black py-4 text-xs font-bold uppercase tracking-[0.5em] hover:bg-white transition-all">
+                Vincular Terminal
+            </button>
+
+            <p class="text-[8px] uppercase tracking-widest italic text-gray-400">
+                Solo desde el interior del dispositivo se revelará la verdad.
+            </p>
+        </div>
+    </div>
+
+    <!-- Modal de Términos -->
+    <div id="termsModal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-md transition-opacity duration-1000 px-6">
+        <div class="w-full max-w-sm p-6 border border-gray-900 bg-void shadow-2xl space-y-6 text-center">
+            <div class="w-full max-w-2xl bg-black/60 border border-gray-900 p-8 md:p-16 shadow-2xl backdrop-blur-sm space-y-12">
+              <div class="text-center">
+                  <h1 class="glitch font-header text-2xl md:text-3xl font-bold tracking-[0.3em] text-blood" data-text="EL PACTO">EL PACTO</h1>
+                  <p class="text-[9px] text-gray-600 uppercase tracking-[0.4em] mt-4 italic">Acuerdo Irrevocable de la Entidad</p>
+              </div>
+              
+              <div class="space-y-8 font-digital">
+                  <div class="group border-l-2 border-blood/20 pl-6 py-2 hover:border-blood transition-colors">
+                      <h3 class="text-[10px] uppercase tracking-[0.3em] text-blood mb-3">01. Destino Dictado</h3>
+                      <p class="text-xs text-gray-500 leading-relaxed uppercase tracking-tighter">
+                          Al cruzar este umbral digital, reconoces que cualquier revelación sobre tu finitud es absoluta dentro de los límites de esta simulación.
+                      </p>
+                  </div>
+                  
+                  <div class="group border-l-2 border-blood/20 pl-6 py-2 hover:border-blood transition-colors">
+                      <h3 class="text-[10px] uppercase tracking-[0.3em] text-blood mb-3">02. Vinculación Espectral</h3>
+                      <p class="text-xs text-gray-500 leading-relaxed uppercase tracking-tighter">
+                          Al aceptar, permites que los algoritmos de la entidad procesen tu rastro digital para aproximar el momento de tu desvanecimiento inevitable.
+                      </p>
+                  </div>
+                  
+                  <div class="group border-l-2 border-blood/20 pl-6 py-2 hover:border-blood transition-colors">
+                      <h3 class="text-[10px] uppercase tracking-[0.3em] text-blood mb-3">03. Ley de Silencio</h3>
+                      <p class="text-xs text-gray-500 leading-relaxed uppercase tracking-tighter">
+                          Cualquier intento de desafiar el cronómetro será castigado con susurros electrónicos a medianoche y la sensación de ser observado.
+                      </p>
+                  </div>
+              </div>
+            </div>
+            <button id="acceptTerms" class="w-full bg-blood text-black py-4 text-[10px] font-bold uppercase tracking-[0.5em] hover:bg-white transition-all">
+                Aceptar el Pacto
+            </button>
+        </div>
+    </div>
+    
+    <main class="relative z-10 flex flex-col items-center justify-center h-full px-6 py-4 overflow-hidden">
+        <div class="w-full max-w-sm bg-black/60 border border-gray-900 p-8 shadow-2xl backdrop-blur-sm flex flex-col justify-center">
+            <div class="text-center mb-12">
+                <h1 class="glitch font-header text-2xl font-bold tracking-[0.3em] text-blood mb-4" data-text="COUNTDOWN">COUNTDOWN</h1>
+                <p class="text-[9px] text-gray-600 italic tracking-[0.3em] uppercase">El fin comienza con tu nombre</p>
+            </div>
+            
+            <form action="/calculate" method="POST" class="space-y-10" novalidate>
+                <div class="relative group">
+                    <label for="name" class="block text-[9px] uppercase tracking-[0.3em] text-gray-600 mb-4 text-center group-focus-within:text-blood transition-colors">Identidad Requerida</label>
+                    <input type="text" id="name" name="name" 
+                           placeholder="PRIMER Y SEGUNDO NOMBRE"
+                           class="w-full bg-transparent border-b border-gray-900 pb-3 text-center text-white focus:outline-none focus:border-blood transition-colors placeholder:text-gray-800 tracking-[0.2em] text-xs uppercase font-digital">
+                </div>
+                
+                <button type="submit" class="w-full bg-transparent border border-blood/40 text-blood py-5 text-[10px] font-bold uppercase tracking-[0.5em] hover:bg-blood hover:text-black transition-all duration-700">
+                    Sellar Destino
+                </button>
+            </form>
+        </div>
+    </main>
+    
+    <script src="/js/app.js"></script>
+
+    <script>
+        const pwaGate = document.getElementById('pwaGate');
+        const installBtn = document.getElementById('pwaInstallBtn');
+        const installInstructions = document.getElementById('installInstructions');
+        let deferredPrompt;
+
+        function isStandalone() {
+            return (window.matchMedia('(display-mode: standalone)').matches) || 
+                   (window.navigator.standalone) || 
+                   localStorage.getItem('pwa_bypass') === 'true';
+        }
+
+        function checkPwaStatus() {
+            if (isStandalone()) {
+                pwaGate.classList.add('opacity-0', 'pointer-events-none');
+                document.body.classList.remove('overflow-hidden');
+            } else {
+                pwaGate.classList.remove('opacity-0', 'pointer-events-none');
+                document.body.classList.add('overflow-hidden');
+            }
+        }
+
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        if (isIOS && !isStandalone()) {
+            installInstructions.innerHTML = `
+                <p class="text-blood font-bold">DISPOSITIVO IOS DETECTADO</p>
+                <p>1. Pulsa el icono de compartir <span class="text-white text-lg">⎋</span> en la parte inferior.</p>
+                <p>2. Busca y selecciona "Agregar a pantalla de inicio".</p>
+                <p>3. Abre la app desde tu pantalla principal.</p>
+            `;
+        }
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            installBtn.classList.remove('hidden');
+            document.getElementById('genericInst').classList.add('hidden');
+        });
+
+        installBtn.addEventListener('click', async () => {
+            if (!deferredPrompt) return;
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+            if (outcome === 'accepted') {
+                console.log('User accepted the install prompt');
+            }
+            deferredPrompt = null;
+        });
+
+        window.addEventListener('appinstalled', () => {
+            checkPwaStatus();
+        });
+
+        checkPwaStatus();
+
+        const savedId = localStorage.getItem('countdown_user_id');
+        if (savedId) {
+            window.location.href = `/countdown/${savedId}`;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const modal = document.getElementById('termsModal');
+            const acceptBtn = document.getElementById('acceptTerms');
+            
+            if (localStorage.getItem('termsAccepted') === 'true') {
+                modal.classList.add('opacity-0', 'pointer-events-none');
+                document.body.classList.remove('overflow-hidden');
+            }
+
+            acceptBtn.addEventListener('click', () => {
+                localStorage.setItem('termsAccepted', 'true');
+                modal.classList.add('opacity-0', 'pointer-events-none');
+                document.body.classList.remove('overflow-hidden');
+            });
+        });
+    </script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+          const form = document.querySelector('form');
+          const nameInput = document.getElementById('name');
+          let errorTimeout;
+          
+          function showError(message) {
+              const oldError = document.querySelector('.custom-error');
+              if (oldError) oldError.remove();
+              
+              nameInput.classList.remove('border-blood', 'animate-pulse');
+              
+              const errorDiv = document.createElement('div');
+              errorDiv.className = 'custom-error mt-6 text-center space-y-3 animate-fade-in';
+              
+              const line = document.createElement('div');
+              line.className = 'w-full h-px bg-gradient-to-r from-transparent via-blood/50 to-transparent';
+              
+              const errorMsg = document.createElement('p');
+              errorMsg.className = 'text-blood text-[9px] uppercase tracking-[0.3em] font-bold animate-pulse';
+              errorMsg.innerHTML = `⚠️ ${message} ⚠️`;
+              
+              const subMsg = document.createElement('p');
+              subMsg.className = 'text-gray-500 text-[7px] uppercase tracking-[0.2em] italic';
+              subMsg.textContent = 'El oráculo no puede leer el vacío...';
+              
+              errorDiv.appendChild(line);
+              errorDiv.appendChild(errorMsg);
+              errorDiv.appendChild(subMsg);
+              
+              nameInput.parentNode.appendChild(errorDiv);
+              
+              nameInput.classList.add('border-blood', 'animate-pulse');
+              nameInput.placeholder = "REVELA TU IDENTIDAD";
+              
+              nameInput.focus();
+              
+              if (errorTimeout) clearTimeout(errorTimeout);
+              errorTimeout = setTimeout(() => {
+                  if (errorDiv.parentNode) errorDiv.remove();
+                  nameInput.classList.remove('border-blood', 'animate-pulse');
+                  if (nameInput.placeholder === "REVELA TU IDENTIDAD") {
+                      nameInput.placeholder = "PRIMER Y SEGUNDO NOMBRE";
+                  }
+              }, 4000);
+          }
+          
+          nameInput.addEventListener('input', () => {
+              const error = document.querySelector('.custom-error');
+              if (error) error.remove();
+              nameInput.classList.remove('border-blood', 'animate-pulse');
+              if (nameInput.placeholder === "REVELA TU IDENTIDAD") {
+                  nameInput.placeholder = "PRIMER Y SEGUNDO NOMBRE";
+              }
+          });
+          
+          form.addEventListener('submit', (e) => {
+              const nameValue = nameInput.value.trim();
+              
+              if (!nameValue) {
+                  e.preventDefault();
+                  showError('DEBES REVELAR TU IDENTIDAD');
+              } else if (nameValue.length < 3) {
+                  e.preventDefault();
+                  showError('EL NOMBRE ES DEMASIADO CORTO');
+              } else if (!/^[a-zA-ZáéíóúñÑ\s]+$/.test(nameValue)) {
+                  e.preventDefault();
+                  showError('SOLO LETRAS VÁLIDAS PARA EL PACTO');
+              }
+          });
+      });
+    </script>
+
+    <style>
+      @keyframes fadeIn {
+          from {
+              opacity: 0;
+              transform: translateY(-10px);
+          }
+          to {
+              opacity: 1;
+              transform: translateY(0);
+          }
+      }
+      
+      .animate-fade-in {
+          animation: fadeIn 0.3s ease-out;
+      }
+    </style>
+</body>
+</html>
