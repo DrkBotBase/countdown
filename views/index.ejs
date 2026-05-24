@@ -4,8 +4,8 @@
     <%- include('partials/head', {title: 'El Oráculo del Tiempo'}); %>
 </head>
 <body class="bg-void text-gray-100 font-sans selection:bg-blood selection:text-white overflow-hidden">
-    <div id="pwaGate" class="fixed inset-0 z-[200] flex items-center justify-center bg-black transition-opacity duration-1000 px-6 text-center">
-        <div class="w-full max-w-sm space-y-10">
+    <div id="pwaGate" class="fixed inset-0 z-[200] flex items-start justify-center bg-black transition-opacity duration-1000 px-6 text-center overflow-y-auto py-10">
+        <div class="w-full max-w-sm space-y-10 my-auto">
             <h2 class="font-header text-xl text-blood tracking-[0.4em] animate-pulse" data-text="ACCESO RESTRINGIDO">ACCESO RESTRINGIDO</h2>
 
             <div class="space-y-6">
@@ -29,15 +29,15 @@
     </div>
 
     <!-- Modal de Términos -->
-    <div id="termsModal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-md transition-opacity duration-1000 px-6">
-        <div class="w-full max-w-sm p-6 border border-gray-900 bg-void shadow-2xl space-y-6 text-center">
-            <div class="w-full max-w-2xl bg-black/60 border border-gray-900 p-8 md:p-16 shadow-2xl backdrop-blur-sm space-y-12">
+    <div id="termsModal" class="fixed inset-0 z-[100] flex items-start justify-center bg-black/95 backdrop-blur-md transition-opacity duration-1000 px-6 overflow-y-auto py-10">
+        <div class="w-full max-w-sm p-4 md:p-6 border border-gray-900 bg-void shadow-2xl space-y-6 text-center my-auto">
+            <div class="w-full max-w-2xl bg-black/60 border border-gray-900 p-4 md:p-8 shadow-2xl backdrop-blur-sm space-y-6 md:space-y-12">
               <div class="text-center">
                   <h1 class="glitch font-header text-2xl md:text-3xl font-bold tracking-[0.3em] text-blood" data-text="EL PACTO">EL PACTO</h1>
                   <p class="text-[9px] text-gray-400 uppercase tracking-[0.4em] mt-4 italic">Acuerdo Irrevocable de la Entidad</p>
               </div>
               
-              <div class="space-y-8 font-digital">
+              <div class="space-y-6 md:space-y-8 font-digital">
                   <div class="group border-l-2 border-blood/20 pl-6 py-2 hover:border-blood transition-colors">
                       <h3 class="text-[10px] uppercase tracking-[0.3em] text-blood mb-3">01. Destino Dictado</h3>
                       <p class="text-xs text-gray-300 leading-relaxed uppercase tracking-tighter">
