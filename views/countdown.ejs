@@ -92,11 +92,29 @@
                         current = target;
                         clearInterval(timer);
                         el.textContent = current.toString().padStart(2, '0');
-                        if (current === 0) el.classList.add('is-zero');
+                        updateZeroStyles();
                         resolve();
                     }
                     el.textContent = current.toString().padStart(2, '0');
                 }, 30);
+            });
+        }
+
+        function updateZeroStyles() {
+            const order = ['years', 'days', 'hours', 'minutes', 'seconds'];
+            let allAboveAreZero = true;
+            
+            order.forEach(id => {
+                const el = document.getElementById(id);
+                if (!el) return;
+                const val = parseInt(el.textContent) || 0;
+                
+                if (val === 0 && allAboveAreZero) {
+                    el.classList.add('is-zero');
+                } else {
+                    el.classList.remove('is-zero');
+                    if (val > 0) allAboveAreZero = false;
+                }
             });
         }
 
@@ -117,14 +135,9 @@
                 const targets = getTargetValues();
                 Object.entries(targets).forEach(([id, val]) => {
                     const el = document.getElementById(id);
-                    const formatted = val.toString().padStart(2, '0');
-                    el.textContent = formatted;
-                    if (formatted === '00') {
-                        el.classList.add('is-zero');
-                    } else {
-                        el.classList.remove('is-zero');
-                    }
+                    el.textContent = val.toString().padStart(2, '0');
                 });
+                updateZeroStyles();
             }, 1000);
         }
 
