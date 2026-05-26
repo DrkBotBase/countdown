@@ -1,4 +1,4 @@
-const CACHE_NAME = 'countdown-v2.5';
+const CACHE_NAME = 'countdown-v2.8';
 const STATIC_ASSETS = [
     '/css/style.css',
     '/js/app.js',
